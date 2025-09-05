@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Minha Amada 💖</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      margin: 0;
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2em;
+      color: #e63946;
+      top: -50px;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      background-color: #e63946;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #d62828;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Para a Minha Amada 💖</h1>
+    <img src="gatinha.jpg" alt="Nossa foto 1">
+    <p id="p1">Sinto muito a sua falta e cada dia longe de você parece interminável.</p>
+    <img src="meuamor.jpg" alt="Nossa foto 2">
+    <p id="p2">Mesmo na distância, meu amor por você só cresce a cada instante.</p>
+    <img src="vida.jpg" alt="Nossa foto 3">
+    <p id="p3">Mal posso esperar pelo momento em que estaremos juntos de novo.</p>
+    <h1 id="final" style="opacity:0;">Te amo mais do que tudo! ❤</h1>
+
+    <button id="showAll">Mostrar Tudo Agora</button>
+  </div>
+
+  <script>
+    window.onload = function() {
+      const messages = ['p1', 'p2', 'p3', 'final'];
+      let delay = 0;
+
+      messages.forEach(id => {
+        setTimeout(() => {
+          document.getElementById(id).style.opacity = 1;
+        }, delay);
+        delay += 3000;
+      });
+
+      document.getElementById('showAll').onclick = () => {
+        messages.forEach(id => document.getElementById(id).style.opacity = 1);
+      };
+
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        heart.innerText = '❤';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }, 500);
+    };
+  </script>
+
+</body>
+</html>
